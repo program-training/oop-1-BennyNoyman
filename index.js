@@ -1,5 +1,4 @@
 // את הקוד שלכם תכתבו כאן
-
 //  1. Rectangle - מלבן
 // class Rectangle {
 //     width: number;
@@ -50,49 +49,21 @@
 //     }
 // }
 // 4. Method Chaining
-// class Rectangle {
-//     width: number;
-//     height: number
-//     constructor(width: number, height: number) {
-//         this.width = width;
-//         this.height = height;
-//     }
-//     getArea(): number{
-//         return this.width * this.height;
-//     }
-//     scale(multiplier: number): this {
-//         this.width *= multiplier;
-//         this.height *= multiplier;
-//         return this;
-//     }
-// }
-// const rec = new Rectangle(2, 3);
-// console.log(rec.scale(2).getArea());
+var Rectangle = /** @class */ (function () {
+    function Rectangle(width, height) {
+        this.width = width;
+        this.height = height;
+    }
+    Rectangle.prototype.getArea = function () {
+        return this.width * this.height;
+    };
+    Rectangle.prototype.scale = function (multiplier) {
+        this.width *= multiplier;
+        this.height *= multiplier;
+        return this;
+    };
+    return Rectangle;
+}());
+var rec = new Rectangle(2, 3);
+console.log(rec.scale(2).scale(2).scale(2).getArea());
 // 5. Shape with draw method
-abstract class Shape {
-    draw(): string {
-        return "drawing a shape";
-    }
-}
-class Circle extends Shape {
-    draw(): string {
-        return "drawing a circle";
-    }
-}
-class Triangle extends Shape {
-    draw(): string {
-        return "drawing a Triangle";
-    }
-}
-class Square extends Shape {
-    draw(): string {
-        return "drawing a Square";
-    }
-}
-const renderShapes = (shapes: Shape[]) => {
-    shapes.forEach(shape => console.log(shape.draw()));
-}
-const circle = new Circle();
-const triangle = new Triangle();
-const square = new Square();
-renderShapes([circle, triangle, square]);
